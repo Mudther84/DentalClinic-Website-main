@@ -1,0 +1,224 @@
+<?php
+$conn = mysqli_connect('localhost', 'root', '', 'contact_db') or die('Connection failed');
+
+if (isset($_POST['submit'])) {
+    $name = mysqli_real_escape_string($conn, $_POST['name']); 
+    $email = mysqli_real_escape_string($conn, $_POST['email']); 
+    $number = mysqli_real_escape_string($conn, $_POST['number']); 
+    $date = mysqli_real_escape_string($conn, $_POST['date']); 
+
+    $insert = mysqli_query($conn, "INSERT INTO `contact_form`(name, email, number, date)
+    VALUES('$name','$email','$number','$date')");
+
+    if ($insert){
+        $message[] = 'تم حجز الموعد بنجاح!';
+    } else {
+        $message[] = 'فشل في حجز الموعد.';
+    }
+}
+?>
+
+<html lang="ar">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>عيادة الأسنان</title>
+
+   <!-- رابط أيقونات Font Awesome -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+   <!-- رابط Bootstrap -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+   <!-- رابط ملف CSS المخصص -->
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="icon" href="images/download.png"/>
+</head>
+<<body dir="rtl">
+
+<!-- بداية قسم الرأس -->
+<header class="header fixed-top">
+   <div class="container">
+      <div class="row align-items-center justify-content-between">
+         <img src="/images/download.png" width="100" alt="" />
+         <nav class="nav">
+            <a href="#home">الرئيسية</a>
+            <a href="#about">من نحن</a>
+            <a href="#services">الخدمات</a>
+            <a href="#reviews">التقييمات</a>
+            <a href="#contact">اتصل بنا</a>
+         </nav>
+         <a href="#contact" class="link-btn">حجز موعد</a>
+         <div id="menu-btn" class="fas fa-bars"></div>
+      </div>
+   </div>
+</header>
+<!-- نهاية قسم الرأس -->
+
+<!-- بداية قسم الصفحة الرئيسية -->
+<section class="home" id="home">
+   <div class="container">
+      <div class="row min-vh-100 align-items-center">
+         <div class="content text-center text-md-right">
+            <h3>دعنا نجعل ابتسامتك أكثر إشراقًا.</h3>
+            <p>يمكن لعيادتنا مساعدتك في الحصول على الابتسامة التي طالما حلمت بها. نقدم طب الأسنان التجميلي، علاج العصب، فحص التسوس والمزيد.</p>
+            <a href="#contact" class="link-btn">حجز موعد</a>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- نهاية قسم الصفحة الرئيسية -->
+
+<!-- بداية قسم من نحن -->
+<section class="about" id="about">
+   <div class="container">
+      <div class="row align-items-center">
+         <div class="col-md-6 image">
+            <img src="images/about-img.jpg" class="w-100 mb-5 mb-md-0" alt="">
+         </div>
+         <div class="col-md-6 content">
+            <span>من نحن</span>
+            <h3>رعاية صحية عائلية حقيقية</h3>
+            <p>تساعدك عيادتنا في تحقيق الابتسامة المثالية التي تحلم بها دون أي إزعاج أو ألم.</p>
+            <a href="#contact" class="link-btn">حجز موعد</a>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- نهاية قسم من نحن -->
+
+
+    <!-- بداية الخدمات -->
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+   <div class="container">
+       <div class="row g-5 mb-5">
+           <div class="col-lg-5 wow zoomIn" data-wow-delay="0.3s" style="min-height: 400px;">
+               <div class="twentytwenty-container position-relative h-100 rounded overflow-hidden">
+                   <img class="position-absolute w-100 h-100" src="img/before.jpg" style="object-fit: cover;">
+                   <img class="position-absolute w-100 h-100" src="img/after.jpg" style="object-fit: cover;">
+               </div>
+           </div>
+           <div class="col-lg-7">
+               <div class="section-title mb-5">
+                   <h5 class="position-relative d-inline-block text-primary text-uppercase">خدماتنا</h5>
+                   <h1 class="display-5 mb-0">نقدم أفضل خدمات طب الأسنان بجودة عالية</h1>
+               </div>
+               <div class="row g-5">
+                   <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.6s">
+                       <div class="rounded-top overflow-hidden">
+                           <img class="img-fluid" src="images/service-1.jpg" alt="">
+                       </div>
+                       <div class="position-relative bg-light rounded-bottom text-center p-4">
+                           <h5 class="m-0">طب الأسنان التجميلي</h5>
+                       </div>
+                   </div>
+                   <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.9s">
+                       <div class="rounded-top overflow-hidden">
+                           <img class="img-fluid" src="images/service-2.jpg" alt="">
+                       </div>
+                       <div class="position-relative bg-light rounded-bottom text-center p-4">
+                           <h5 class="m-0">زراعة الأسنان</h5>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="row g-5 wow fadeInUp" data-wow-delay="0.1s">
+           <div class="col-lg-7">
+               <div class="row g-5">
+                   <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.3s">
+                       <div class="rounded-top overflow-hidden">
+                           <img class="img-fluid" src="images/service-3.jpg" alt="">
+                       </div>
+                       <div class="position-relative bg-light rounded-bottom text-center p-4">
+                           <h5 class="m-0">جسور الأسنان</h5>
+                       </div>
+                   </div>
+                   <div class="col-md-6 service-item wow zoomIn" data-wow-delay="0.6s">
+                       <div class="rounded-top overflow-hidden">
+                           <img class="img-fluid" src="images/service-4.jpg" alt="">
+                       </div>
+                       <div class="position-relative bg-light rounded-bottom text-center p-4">
+                           <h5 class="m-0">تبييض الأسنان</h5>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="col-lg-5 service-item wow zoomIn" data-wow-delay="0.9s">
+               <div class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-4">
+                  <a href="#contact"> <h3 class="text-white mb-3">حجز موعد</h3></a>
+                   <p class="text-white mb-3">نحن هنا لمساعدتك في الحصول على الابتسامة التي تستحقها! احجز موعدك الآن.</p>
+                   <h2 class="text-white mb-0">+962795919919</h2>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<!-- نهاية الخدمات -->
+
+<!-- بداية العرض الخاص -->
+<div class="container-fluid bg-offer my-5 py-5 wow fadeInUp" data-wow-delay="0.1s">
+   <div class="container py-5">
+       <div class="row justify-content-center">
+           <div class="col-lg-7 wow zoomIn" data-wow-delay="0.6s">
+               <div class="offer-text text-center rounded p-5">
+                   <h1 class="display-5 text-white">وفّر 30% على أول فحص أسنان لك</h1>
+                   <p class="text-white mb-4">احصل على خصم خاص لأول زيارة لك! اغتنم الفرصة للحفاظ على صحة أسنانك بأفضل الأسعار.</p>
+                   <a href="appointment.html" class="btn btn-dark py-3 px-5 me-3">حجز موعد</a>
+                   <a href="" class="btn btn-light py-3 px-5">اقرأ المزيد</a>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<!-- نهاية العرض الخاص -->
+<!-- بداية قسم الاتصال -->
+<section class="contact" id="contact">
+   <h1 class="heading">حجز موعد</h1>
+   <form action="<php echo $_SERVER['PHP_SELF']; ?>" mathod="podt">
+    <?php
+    if (isset($message)) {
+        foreach($message as $massage){
+            echo '<p class="message">' . $message . '</p>';
+        }
+        //echo '<p class="message">' . $message . '</p>';
+    }    
+    ?>
+    <p class="message">testing message</p>
+      <span>أدخل اسمك :</span>
+      <input type="text" name="name" placeholder="أدخل اسمك" class="box" required>
+      <span>أدخل بريدك الإلكتروني :</span>
+      <input type="email" name="email" placeholder="أدخل بريدك الإلكتروني" class="box" required>
+      <span>أدخل رقم هاتفك :</span>
+      <input type="number" name="number" placeholder="أدخل رقم هاتفك" class="box" required>
+      <span>حدد تاريخ الموعد :</span>
+      <input type="datetime-local" name="date" class="box" required>
+      <input type="submit" value="حجز الموعد" name="submit" class="link-btn">
+   </form>
+</section>
+<!-- نهاية قسم الاتصال -->
+
+<!-- بداية قسم التذييل -->
+<section class="footer">
+   <div class="box-container container">
+      <div class="box">
+         <i class="fas fa-phone"></i>
+         <h3>رقم الهاتف</h3>
+         <p>+962795919919</p>
+      </div>
+      <div class="box">
+         <i class="fas fa-envelope"></i>
+         <h3>البريد الإلكتروني</h3>
+         <p>info@Definitedentalclinic.com</p>
+      </div>
+   </div>
+  <!-- <div class="credit"> &copy;<?php echo date('Y'); ?> <span>عيادة الأسنان</span> جميع الحقوق محفوظة </div>-->
+</section>
+<!-- نهاية قسم التذييل -->
+
+<!-- روابط ملفات الجافاسكريبت -->
+<script src="js/script.js"></script>
+<script src="/js/axios.js"></script>
+</body>
+</html>
