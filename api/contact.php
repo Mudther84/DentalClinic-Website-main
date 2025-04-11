@@ -8,17 +8,17 @@ if ($conn->connect_error) {
 }
 
 // استقبال البيانات من النموذج
-$name     = $_POST['name'];
-$email    = $_POST['email'];
-$phone    = $_POST['number'];
-$date     = $_POST['date'];
+$name    = $_POST['name'];
+$email   = $_POST['email'];
+$phone   = $_POST['phone'];
+$message = $_POST['message'];
 
 // إدخال البيانات إلى الجدول
-$sql = "INSERT INTO appointments (name, email, phone, appointment_date)
-        VALUES ('$name', '$email', '$phone', '$date')";
+$sql = "INSERT INTO contact_messages (name, email, phone, message)
+        VALUES ('$name', '$email', '$phone', '$message')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "تم حجز الموعد بنجاح!";
+    echo "تم إرسال رسالتك بنجاح!";
 } else {
     echo "حدث خطأ: " . $conn->error;
 }
