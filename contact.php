@@ -153,6 +153,8 @@
 
     <!-- سكريبتات جافا سكريبت -->
     <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="/js/axios.js"></script>
 </body>
 

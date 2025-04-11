@@ -10,7 +10,7 @@
 
     <div class="container">
         <h2>إنشاء حساب</h2>
-        <form action="register.php" method="POST">
+        <form action="register.php" method="POST" action="/api/register.php">
             
             <div class="input-group">
                 <label for="name">الاسم الكامل</label>
@@ -55,7 +55,7 @@
                 confirm_password: document.getElementById("confirm-password").value
             };
         
-            axios.post("register.php", data)
+            axios.post("/api/register.php", data)
                 .then(response => {
                     alert(response.data.message);
                     if (response.data.status === "success") {

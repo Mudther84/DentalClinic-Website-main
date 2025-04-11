@@ -10,7 +10,7 @@
 
     <div class="container">
         <h2>تسجيل الدخول</h2>
-        <form action="login.php" method="POST">
+        <form action="login.php" method="POST" action="/api/login.php">
             
             <div class="input-group">
                 <label for="email">البريد الإلكتروني</label>
@@ -37,7 +37,7 @@
                 password: document.getElementById("password").value
             };
         
-            axios.post("login.php", data)
+            axios.post("/api/login.php", data)
                 .then(response => {
                     alert(response.data.message);
                     if (response.data.status === "success") {

@@ -1,17 +1,25 @@
-document.getElementById('registerForm').addEventListener('submit', function (e) {
+document.getElementById("contact-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    let formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        phone: document.getElementById('phone').value,
-        dob: document.getElementById('dob').value,
-        gender: document.getElementById('gender').value,
-        notes: document.getElementById('notes').value,
+    const form = e.target;
+    const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        message: form.message.value
     };
 
-    axios.post('register.php', formData)
-        .then(response => alert(response.data.message))
-        .catch(error => alert(error.response.data.error));
+    fetch("contact.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+        .then(res => res.json())
+        .then(response => {
+            alert(response.message);
+        })
+        .catch(error => {
+            alert("حدث خطأ أثناء الإرسال");
+            console.error(error);
+        });
 });

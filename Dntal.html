@@ -55,7 +55,7 @@
 <!-- قسم التواصل يبدأ -->
 <section class="contact" id="contact">
    <h1 class="heading">احجز موعدًا</h1>
-   <form method="POST">
+   <form method="POST" action="/api/appoinment.php">
       <span>ادخل اسمك :</span>
       <input type="text" name="name" placeholder="ادخل اسمك" class="box" required>
       <span>ادخل بريدك الإلكتروني :</span>
@@ -77,10 +77,10 @@
         <p><strong>📧 البريد الإلكتروني:</strong> info@yourdentalclinic.com</p>
         <p><strong>🕒 ساعات العمل:</strong> من الإثنين إلى الجمعة: 9 صباحًا - 6 مساءً | السبت: 10 صباحًا - 4 مساءً | الأحد: مغلق</p>
     </div>
-    <form class="contact-form" method="POST">
+    <form class="contact-form" method="POST" action="/api/contact.php">
         <input type="text" placeholder="اسمك" required>
         <input type="email" placeholder="بريدك الإلكتروني" required>
-        <input type="tel" placeholder="رقم هاتفك" required>
+        <input type="number" placeholder="رقم هاتفك" required>
         <textarea placeholder="رسالتك" rows="4" required></textarea>
         <button type="submit">إرسال الرسالة</button>
     </form>
@@ -92,9 +92,8 @@
     </div>
  </div>
  <!--قسم الاتصال 2 ينتهي-->
-
 <!-- سكريبتات جافا سكريبت -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="js/script.js"></script>
-<script src="/js/axios.js"></script>
 </body>
 </html>
