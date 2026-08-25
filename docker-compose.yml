@@ -1,0 +1,40 @@
+services:
+  # خدمة تطبيق PHP والواجهة الأمامية
+  web:
+    build: .
+    container_name: dental_web
+    ports:
+      - "80:80"
+    volumes:
+      # ربط المجلد الحالي بمجلد السيرفر لتحديث الملفات فوراً دون إعادة بناء
+      - ./:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - dental_network
+
+  # خدمة قاعدة بيانات MySQL
+  db:
+    image: mysql:8.0
+    container_name: dental_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dental_clinic
+    ports:
+      - "3306:3306"
+    volumes:
+      # تنفيذ ملف SQL تلقائياً عند إنشاء قاعدة البيانات لأول مرة
+      - ./api/db.sql:/docker-entrypoint-initdb.d/init.sql
+      # حفظ بيانات قاعدة البيانات بشكل دائم حتى بعد إيقاف الحاوية
+      - db_data:/var/lib/mysql
+    networks:
+      - dental_network
+
+# تعريف مساحة التخزين الدائمة للشبكة وقاعدة البيانات
+volumes:
+  db_data:
+
+networks:
+  dental_network:
+    driver: bridge
